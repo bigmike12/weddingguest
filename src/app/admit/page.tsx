@@ -27,10 +27,13 @@ const Admit = () => {
 
       <div className="flex gap-4">
         <InfoCard title="Logged guests" count={loggedGuests.toString()} />
-        <InfoCard title="Awaited guests" count={(totalGuests - loggedGuests).toString()} />
+        <InfoCard
+          title="Awaited guests"
+          count={(totalGuests - loggedGuests).toString()}
+        />
       </div>
 
-      <QRScanner />
+      <QRScanner onSuccess={handleSuccessfulScan} />
     </div>
   );
 };
