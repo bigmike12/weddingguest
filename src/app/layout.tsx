@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import ModalController from "@/components/modalController/ModalController";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -21,6 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Toaster position="top-right" expand richColors={true} />
       <ModalController />
       <body className={poppins.className}>
         <div className="p-5">{children}</div>
