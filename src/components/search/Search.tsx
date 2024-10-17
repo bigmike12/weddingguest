@@ -49,19 +49,16 @@ const SearchComponent = ({
       return;
     }
 
-    // Create regex for case-insensitive search
     const regex = new RegExp(trimmedSearchTerm, "i");
-
     const guest = guestList.find(({ name, phone }) => {
       const normalizedNumber = normalizePhone(phone);
       return regex.test(name) || regex.test(normalizedNumber);
     });
 
-    console.log("njknkn", guest);
-
     if (guest) {
-      const normalizedGuestPhone = normalizePhone(guest.phone);
-      if (admittedGuests.has(guest.phone)) {
+      const normalizedGuestPhone = normalizePhone(guest.phone || guest.name);
+
+      if (admittedGuests.has(normalizedGuestPhone)) {
         openModal(
           "",
           <Success
@@ -72,7 +69,6 @@ const SearchComponent = ({
           "658px"
         );
       } else {
-        admittedGuests.add(normalizedGuestPhone); // Add guest to admitted set by phone number
         openModal(
           "",
           <Success
@@ -86,7 +82,8 @@ const SearchComponent = ({
           />,
           "658px"
         );
-        onSuccess(normalizedGuestPhone); // Notify success with guest's phone number
+
+        onSuccess(normalizedGuestPhone); // Notify parent of successful admission
       }
     } else {
       openModal(

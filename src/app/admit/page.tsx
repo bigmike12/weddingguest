@@ -37,46 +37,49 @@ const Admit = () => {
   // Callback to increment logged guests
   const handleSuccessfulScan = (guestPhone: string) => {
     const normalizedPhone = normalizePhone(guestPhone);
-  
+
     if (admittedGuests.has(normalizedPhone)) {
       toast.error("This guest has already been admitted.");
       return;
     }
-  
+
+    // Update admitted guests and save to local storage
     setAdmittedGuests((prev) => {
       const updatedGuests = new Set(prev).add(normalizedPhone);
-      // Save the updated admitted guests to local storage
-      localStorage.setItem("admittedGuests", JSON.stringify(Array.from(updatedGuests)));
+      localStorage.setItem(
+        "admittedGuests",
+        JSON.stringify(Array.from(updatedGuests))
+      );
       return updatedGuests;
     });
-    setLoggedGuests((prev) => prev + 1);
+
+    setLoggedGuests((prev) => prev + 1); // Increment the logged guest count
   };
 
   useEffect(() => {
     const loadGuests = async () => {
       const guestCollection = collection(db, "guests");
       const guestSnapshot = await getDocs(guestCollection);
-  
+
       if (guestSnapshot.empty) {
         await addGuestsToFirestore(); // Add guests if the collection is empty
       }
-  
+
       fetchGuests(); // Fetch guests after adding or confirming they exist
       setGuestsLoaded(true); // Set guestsLoaded to true after loading
     };
-  
+
     // Load admitted guests from local storage on app load
     const savedAdmittedGuests = localStorage.getItem("admittedGuests");
     if (savedAdmittedGuests) {
       setAdmittedGuests(new Set(JSON.parse(savedAdmittedGuests)));
       setLoggedGuests(JSON.parse(savedAdmittedGuests).length); // Set loggedGuests count
     }
-  
+
     if (!guestsLoaded) {
       loadGuests();
     }
   }, [guestsLoaded]);
-  
 
   const normalizePhone = (phone: string) => phone.replace(/\D/g, "");
 
