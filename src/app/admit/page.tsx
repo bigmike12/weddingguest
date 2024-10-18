@@ -55,6 +55,7 @@ const Admit = () => {
 
     setLoggedGuests((prev) => prev + 1); // Increment the logged guest count
   };
+  
 
   useEffect(() => {
     const loadGuests = async () => {

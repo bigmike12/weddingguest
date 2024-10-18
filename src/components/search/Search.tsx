@@ -10,6 +10,7 @@ interface Guest {
   name: string;
   phone: string; // Unique identifier for each guest
   type: string;
+  table: string; // Unique identifier for
 }
 
 interface SearchComponentProps {
@@ -77,6 +78,8 @@ const SearchComponent = ({
             text={
               <>
                 Hello {guest.name}, enjoy the party! <b>{guest.type}</b>
+                <br />
+                <p>SEAT NO</p> <b>{guest.table}</b>
               </>
             }
           />,

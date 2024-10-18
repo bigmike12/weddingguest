@@ -1,5 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, doc, getDocs, query, where, writeBatch } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDocs,
+  query,
+  where,
+  writeBatch,
+} from "firebase/firestore";
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -8,7 +16,7 @@ const firebaseConfig = {
   projectId: "weddingguest-ab3fa",
   storageBucket: "weddingguest-ab3fa.appspot.com",
   messagingSenderId: "619234282495",
-  appId: "1:619234282495:web:a0082c9643d1ee6051b5ca"
+  appId: "1:619234282495:web:a0082c9643d1ee6051b5ca",
 };
 
 // Initialize Firebase
@@ -16,35 +24,1804 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 const guests = [
-  { phone: "08080764159", name: "Mr Kazeem", type: "Single" },
-  { phone: "08033792075", name: "Mr Mayowa", type: "Plus One" },
-  { phone: "08147257493", name: "Nkem Tosin", type: "Plus One" },
-  { phone: "07051737419", name: "Rufiat", type: "Single" },
-  { phone: "09057612707", name: "Mary", type: "Single" },
-  { phone: "08097360353", name: "Tokunbo", type: "Plus One" },
-  { phone: "08161347742", name: "Annabel", type: "Single" },
-  { phone: "09099865605", name: "Aisha", type: "Single" },
-  { phone: "09076782036", name: "Chiamaka", type: "Single" },
+  {
+    phone: "08080764159",
+    name: "Mr Kazeem",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "08033792075",
+    name: "Mr Mayowa",
+    type: "Plus One",
+    table: null,
+  },
+  {
+    phone: "08147257493",
+    name: "Nkem Tosin",
+    type: "Plus One",
+    table: null,
+  },
+  {
+    phone: "07051737419",
+    name: "Rufiat",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "09057612707",
+    name: "Mary",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "08097360353",
+    name: "Tokunbo",
+    type: "Plus One",
+    table: null,
+  },
+  {
+    phone: "08022093000",
+    name: "Femi",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "09099865605",
+    name: "Aisha",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "08126879183",
+    name: "Mr Obinna",
+    type: "Single",
+    table: "49",
+  },
+  {
+    phone: "08133988846",
+    name: "Nneka",
+    type: "Plus Two",
+    table: "17",
+  },
+  {
+    phone: "08100088924",
+    name: "Mrs. Paul",
+    type: "Single",
+    table: "17",
+  },
+  {
+    phone: "09015111966",
+    name: "Mrs. Theresa Peter",
+    type: "Plus one",
+    table: "17",
+  },
+  {
+    phone: "07031912587",
+    name: "Sr. Hapuluchukwu DDL",
+    type: "Single",
+    table: "3",
+  },
+  {
+    phone: "07037739640",
+    name: "Sr. Ursula DDL",
+    type: "Single",
+    table: "3",
+  },
+  {
+    phone: "08088388042",
+    name: "Mrs. Ogunmola Juliet",
+    type: "Single",
+    table: "17",
+  },
+  {
+    phone: "08098246473",
+    name: "Nwaribe Theodora",
+    type: "Single",
+    table: "17",
+  },
+  {
+    phone: "08105020752",
+    name: "Idiage Osaro",
+    type: "Plus One",
+    table: "22",
+  },
+  {
+    phone: "07064613378",
+    name: "Nonye Konga",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "08053931373",
+    name: "Omolade GYM",
+    type: "Plus One",
+    table: null,
+  },
+  {
+    phone: "08166502234",
+    name: "Henry Odianyenma",
+    type: "Single",
+    table: "49",
+  },
+  {
+    phone: "08171059991",
+    name: "Mrs Obonna Angela",
+    type: "Single",
+    table: "19",
+  },
+  {
+    phone: "07085880025",
+    name: "Mini Me",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "08066706144",
+    name: "Mrs. Esom Okolo",
+    type: "Plus two",
+    table: "19",
+  },
+  {
+    phone: "08063656109",
+    name: "Evans Alozie",
+    type: "Single",
+    table: "17",
+  },
+  {
+    phone: "08171848935",
+    name: "Mrs Mbajiobi Chizoba",
+    type: "Single",
+    table: "19",
+  },
+  {
+    phone: "09031368592",
+    name: "Muhammed Idowu",
+    type: "Single",
+    table: "22",
+  },
+  {
+    phone: "07013272887",
+    name: "Mr Chigbo Johnpaul",
+    type: "Single",
+    table: "19",
+  },
+  {
+    phone: "08107422493",
+    name: "Tiamiyu Emmanuel Abolaji",
+    type: "Plus One",
+    table: "22",
+  },
+  {
+    phone: "07010804074",
+    name: "Ohajunwa Nora",
+    type: "Single",
+    table: "17",
+  },
+  {
+    phone: "09026090757",
+    name: "St. Cyprian Parish Chior",
+    type: "Group 5",
+    table: "25",
+  },
+  {
+    phone: "08069789",
+    name: "St. Cyprian Redemmer Chior",
+    type: "Group 5",
+    table: "25",
+  },
+  {
+    phone: null,
+    name: "Lumen Christi Choir",
+    type: "Group 10",
+    table: "27",
+  },
+  {
+    phone: "08059378004",
+    name: "Deanary Chior Master Exco",
+    type: "Group 5",
+    table: "29",
+  },
+  {
+    phone: "08060301728",
+    name: "Lagos ADC Chior",
+    type: "Group 5",
+    table: "29",
+  },
+  {
+    phone: "08033000008",
+    name: "St. Patrick Society",
+    type: "Group 10",
+    table: "37",
+  },
+  {
+    phone: "08173931779",
+    name: "St. Cyprian CCM",
+    type: "Group 10",
+    table: "35",
+  },
+  {
+    phone: "07013259295",
+    name: "St. Cyprian CWO Group A",
+    type: "Group 5",
+    table: "39",
+  },
+  {
+    phone: "08060249328",
+    name: "Temidayo Konga",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "08037107537",
+    name: null,
+    type: "Group 10",
+    table: "3",
+  },
+  {
+    phone: "08159899362",
+    name: null,
+    type: "Group 10",
+    table: "3",
+  },
+  {
+    phone: null,
+    name: "RESERVED",
+    type: "Group 10",
+    table: "1",
+  },
+  {
+    phone: "07030808977",
+    name: "Ukeme konga tech",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "08064889238",
+    name: "Micheal Konga",
+    type: "Single",
+    table: null,
+  },
+  {
+    phone: "08065591065",
+    name: "St. Cathrine CWO Esther Group",
+    type: "Group 5",
+    table: "39",
+  },
+  {
+    phone: "08063601478",
+    name: "St. Cyprian CWO Exco",
+    type: "Group 10",
+    table: "23",
+  },
+  {
+    phone: "08063601478",
+    name: "St. Cyprian CWO Exco",
+    type: "Group 10",
+    table: "21",
+  },
+  {
+    phone: "08069422360",
+    name: "Mrs Priscilla Ogbenna",
+    type: "Plus One",
+    table: "10",
+  },
+  {
+    phone: "08033444632",
+    name: "Mr Joseph Odiete",
+    type: "Plus Two",
+    table: "10",
+  },
+  {
+    phone: "07026627982",
+    name: "Justina David",
+    type: "Single",
+    table: "31",
+  },
+  {
+    phone: "08023441824",
+    name: "Josephine Aijanyan",
+    type: "Single",
+    table: "31",
+  },
+  {
+    phone: "08039417858",
+    name: "Mrs Adebanji Victoria",
+    type: "Single",
+    table: "38",
+  },
+  {
+    phone: "08131914696",
+    name: "Mrs Agustine Okeke",
+    type: "Single",
+    table: "38",
+  },
+  {
+    phone: "07083730754",
+    name: "Christiana Ukenazor",
+    type: "Single",
+    table: "31",
+  },
+  {
+    phone: "08035863937",
+    name: "Mrs Odeleye",
+    type: "Single",
+    table: "38",
+  },
+  {
+    phone: "08023299518",
+    name: "Princewill Okonkwo",
+    type: "Single",
+    table: "31",
+  },
+  {
+    phone: "08062518032",
+    name: "Nneka",
+    type: "Single",
+    table: "31",
+  },
+  {
+    phone: "09158542111",
+    name: "Mercy Nwambe",
+    type: "Single",
+    table: "31",
+  },
+  {
+    phone: "07062521964",
+    name: "Mr&Mrs Olufade Pascal",
+    type: "Plus One",
+    table: "10",
+  },
+  {
+    phone: "08039103299",
+    name: "Mrs Okeke Pearl",
+    type: "Single",
+    table: "21",
+  },
+  {
+    phone: "08072788689",
+    name: "Mrs Osarobo Tina",
+    type: "Plus One",
+    table: "10",
+  },
+  {
+    phone: "08033033533",
+    name: "Mr Nwanosiko",
+    type: "Plus One",
+    table: "38",
+  },
+  {
+    phone: "08033057520",
+    name: "Mr & Mrs Afolabi",
+    type: "Plus One",
+    table: "9",
+  },
+  {
+    phone: "08033313689",
+    name: "Mrs Josephine Omogiade",
+    type: "Single",
+    table: "31",
+  },
+  {
+    phone: "08153833462",
+    name: "Mrs Mabel Obasi",
+    type: "Single",
+    table: "15",
+  },
+  {
+    phone: "09078992064",
+    name: "Mr &Mrs Botu Feyi",
+    type: "Plus Three",
+    table: "9",
+  },
+  {
+    phone: "08060150785",
+    name: "Mr Ugochukwu",
+    type: "Single",
+    table: "9",
+  },
+  {
+    phone: "08033063570",
+    name: "Mrs Adigun",
+    type: "Single",
+    table: "21",
+  },
+  {
+    phone: "07030260488",
+    name: "Mr Ayorinde Ajibaye",
+    type: "Plus One",
+    table: "31",
+  },
+  {
+    phone: "08033990381",
+    name: "Mr Chrisbede Anumata",
+    type: "Single",
+    table: "31",
+  },
+  {
+    phone: "08154022323",
+    name: "Mr Adepoju Agbayewu Nicholas",
+    type: "Plus One",
+    table: "38",
+  },
+  {
+    phone: "08034318213",
+    name: "Siyona Jeremiah",
+    type: "Single",
+    table: "38",
+  },
+  {
+    phone: "09077534087",
+    name: "Mrs Otaigbe Rose",
+    type: "Plus One",
+    table: "22",
+  },
+  {
+    phone: "07055597576",
+    name: "Mrs Ruth Lawal",
+    type: "Plus One",
+    table: "38",
+  },
+  {
+    phone: "08064797372",
+    name: "Mrs Iroko Esther",
+    type: "Single",
+    table: "21",
+  },
+  {
+    phone: "07038558991",
+    name: "Mr Eyah Dominic",
+    type: "Single",
+    table: "30",
+  },
+  {
+    phone: "08113340449",
+    name: "Malachi Okoro",
+    type: "Single",
+    table: "30",
+  },
+  {
+    phone: "08162080355",
+    name: "Mrs Mariam Ajoke",
+    type: "Single",
+    table: "15",
+  },
+  {
+    phone: "08060705158",
+    name: "Mrs Agnes Onwuka",
+    type: "Single",
+    table: "30",
+  },
+  {
+    phone: "08026191026",
+    name: "Mrs Mary Adegoke",
+    type: "Single",
+    table: "30",
+  },
+  {
+    phone: "08062860081",
+    name: "Mrs Victoria Aikoye",
+    type: "Plus Three",
+    table: "9",
+  },
+  {
+    phone: "07066939165",
+    name: "Mrs Nzei Veronica",
+    type: "Single",
+    table: "30",
+  },
+  {
+    phone: "08053770845",
+    name: "Mrs Okunomoye",
+    type: "Single",
+    table: "30",
+  },
+  {
+    phone: "09013377578",
+    name: "Chioma Kelechi",
+    type: "Single",
+    table: "30",
+  },
+  {
+    phone: "08103922408",
+    name: "Obagbola Happiness",
+    type: "Single",
+    table: "30",
+  },
+  {
+    phone: "09039097988",
+    name: "Gloria Hart",
+    type: "Single",
+    table: "30",
+  },
+  {
+    phone: "07085344761",
+    name: "Mrs Omotayo Adeleke",
+    type: "Single",
+    table: "40",
+  },
+  {
+    phone: "09025835254",
+    name: "Mrs Anne Ogu",
+    type: "Single",
+    table: "15",
+  },
+  {
+    phone: "07034911810",
+    name: "Mrs Ifeoma Jane Asogwa",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "07036785611",
+    name: "Mr & Mrs Iyken Okafor Ikechukwu",
+    type: "Plus One",
+    table: "40",
+  },
+  {
+    phone: "08137682727",
+    name: "Mrs Dupe Iheakam",
+    type: "Single",
+    table: "40",
+  },
+  {
+    phone: "08034208353",
+    name: "Mrs Chika Ogbuka",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "08027350678",
+    name: "Mrs Charity Okoye",
+    type: "Single",
+    table: "40",
+  },
+  {
+    phone: "08037127366",
+    name: "Mr Micheal Holy Family",
+    type: "Single",
+    table: "40",
+  },
+  {
+    phone: "08033933593",
+    name: "Mr Prince Duru",
+    type: "Single",
+    table: "40",
+  },
+  {
+    phone: "08062500210",
+    name: "Mr & Mrs Iya Fusayo",
+    type: "Plus One",
+    table: "40",
+  },
+  {
+    phone: "08138551124",
+    name: "Iya Egun",
+    type: "Single",
+    table: "34",
+  },
+  {
+    phone: "08163199078",
+    name: "Iya Ayo Nurse",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "07032998585",
+    name: "Mr Amanuizie Patrick",
+    type: "Single",
+    table: "40",
+  },
+  {
+    phone: "08129346159",
+    name: "Tiamiyu Felix",
+    type: "Single",
+    table: "22",
+  },
+  {
+    phone: "08038051623",
+    name: "Sunday Eze",
+    type: "Single",
+    table: "36",
+  },
+  {
+    phone: "07064642311",
+    name: "Kelechi Enkjika",
+    type: "Single",
+    table: "36",
+  },
+  {
+    phone: "08023404248",
+    name: "Fin Sec Holy Family",
+    type: "Single",
+    table: "36",
+  },
+  {
+    phone: "08034310325",
+    name: "Nnamdi Akwuohe",
+    type: "Single",
+    table: "36",
+  },
+  {
+    phone: "08023324219",
+    name: "Mr & Mrs John Ogun",
+    type: "Plus One",
+    table: "36",
+  },
+  {
+    phone: "08038557632",
+    name: "Mr &Mrs Emereonye",
+    type: "Plus One",
+    table: "36",
+  },
+  {
+    phone: "07031166189",
+    name: "Mr &Mrs Emily Ugwu",
+    type: "Plus One",
+    table: "36",
+  },
+  {
+    phone: "0813571880",
+    name: "Mrs Ononiwu",
+    type: "Single",
+    table: "42",
+  },
+  {
+    phone: "08038182113",
+    name: "Rita Chaira",
+    type: "Single",
+    table: "42",
+  },
+  {
+    phone: "08034239616",
+    name: "Mathew Anikwe",
+    type: "Single",
+    table: "42",
+  },
+  {
+    phone: "07037497604",
+    name: "Last Born",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "08027291408",
+    name: "Helen Duru",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "08032252811",
+    name: "Attraction",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "081224433",
+    name: "Dat Egbe",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "09166994408",
+    name: "Chidi Duru",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "08033499366",
+    name: "Kelechi Okpara",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "08034288893",
+    name: "Onyenye Okwara",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "08035531282",
+    name: "Olisa Emeka",
+    type: "Single",
+    table: "42",
+  },
+  {
+    phone: "09033498367",
+    name: "Emma Teacher",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "08028262769",
+    name: "Go Nepa",
+    type: "Single",
+    table: "42",
+  },
+  {
+    phone: "08062684149",
+    name: "My Son Egbe",
+    type: "Single",
+    table: "42",
+  },
+  {
+    phone: "08141518197",
+    name: "Theresa Amuamuzie",
+    type: "Single",
+    table: "42",
+  },
+  {
+    phone: "08060311256",
+    name: "Charity Ogbuka",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "0706999979",
+    name: "Mr & Mrs Ego Ikey",
+    type: "Plus One",
+    table: "42",
+  },
+  {
+    phone: "08130838685",
+    name: "Mr & Mrs Egbe",
+    type: "Plus One",
+    table: "42",
+  },
+  {
+    phone: "08038193960",
+    name: "Iya Lakun",
+    type: "Single",
+    table: "34",
+  },
+  {
+    phone: "07067965877",
+    name: "Joy Duru",
+    type: "Single",
+    table: "42",
+  },
+  {
+    phone: "08052339370",
+    name: "Mrs Adu",
+    type: "Single",
+    table: "34",
+  },
+  {
+    phone: "08034628236",
+    name: "Mrs Kelechi Ikono",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "09027674904",
+    name: "Beke/ Emma Ekume",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "07055139979",
+    name: "Mr & Mrs Ajala",
+    type: "Plus One",
+    table: "34",
+  },
+  {
+    phone: null,
+    name: "Alhaji Sohrunke Mudashiru",
+    type: "Single",
+    table: "34",
+  },
+  {
+    phone: "08148100608",
+    name: "Mr Akonde",
+    type: "Single",
+    table: "34",
+  },
+  {
+    phone: "08034545899",
+    name: "Dr Ajuebor Felix",
+    type: "Single",
+    table: "34",
+  },
+  {
+    phone: "08037229633",
+    name: "Mr Amusan",
+    type: "Single",
+    table: "24",
+  },
+  {
+    phone: "07033591663",
+    name: "Mrs Aremo",
+    type: "Single",
+    table: "24",
+  },
+  {
+    phone: "08035366388",
+    name: "Mrs Dam Egbuta",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "08106660067",
+    name: "Mr Musa",
+    type: "Single",
+    table: "28",
+  },
+  {
+    phone: "08035831768",
+    name: "Mrs Lassan Susan",
+    type: "Single",
+    table: "24",
+  },
+  {
+    phone: "08034919096",
+    name: "Mrs Ibrahim Folasayo",
+    type: "Single",
+    table: "24",
+  },
+  {
+    phone: "07045855671",
+    name: "Alahaji Balogun",
+    type: "Single",
+    table: "24",
+  },
+  {
+    phone: "08023876684",
+    name: "Iman Balogun",
+    type: "Single",
+    table: "24",
+  },
+  {
+    phone: "09063258159",
+    name: "Mummy Oluchi",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "08034912369",
+    name: "Nwamiri Peter",
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08028559493",
+    name: "Mr & Mrs Onuohia",
+    type: "Plus One",
+    table: "39",
+  },
+  {
+    phone: "08133720919",
+    name: "Jude Ndidiamaka",
+    type: "Single",
+    table: "41",
+  },
+  {
+    phone: "08140772488",
+    name: "Mrs Veronica Iyobheble",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "08037122383",
+    name: "Nwigbakpa Kenneth",
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08033234240",
+    name: "Ezeh Chinyere",
+    type: "Single",
+    table: "41",
+  },
+  {
+    phone: "07067355906",
+    name: "Onyenye",
+    type: "Single",
+    table: "15",
+  },
+  {
+    phone: "08164374482",
+    name: "Mummy Daniel",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "08038486848",
+    name: "Mr & Mrs Deji",
+    type: "Plus One",
+    table: "24",
+  },
+  {
+    phone: "08034053838",
+    name: "Rev Bishop Adeoti Peter",
+    type: "Single",
+    table: "24",
+  },
+  {
+    phone: "08103606249",
+    name: "Mr & Deaconess Ohayinka",
+    type: "Plus One",
+    table: "26",
+  },
+  {
+    phone: "080682121804",
+    name: "Mr John Chukwu",
+    type: "Single",
+    table: "41",
+  },
+  {
+    phone: "09012851854",
+    name: "Mr AC Sunday",
+    type: "Single",
+    table: "41",
+  },
+  {
+    phone: "08139581296",
+    name: "Mr Emeka Onuigbo",
+    type: "Single",
+    table: "41",
+  },
+  {
+    phone: "09018437473",
+    name: "Mrs Christian Esther",
+    type: "Single",
+    table: "33",
+  },
+  {
+    phone: "08033132501",
+    name: "Engr & Mrs",
+    type: "Plus One",
+    table: "44",
+  },
+  {
+    phone: "08056174314",
+    name: "Emmanuel Ayodeji",
+    type: "Single",
+    table: "41",
+  },
+  {
+    phone: "08034957977",
+    name: "Mr & Mrs Ngbechi Isinguzo",
+    type: "Plus One",
+    table: "44",
+  },
+  {
+    phone: "08030149340",
+    name: "Mrs Pius Salami Idowu",
+    type: "Single",
+    table: "24",
+  },
+  {
+    phone: "09126836012",
+    name: "Pastor Sam",
+    type: "Single",
+    table: "26",
+  },
+  {
+    phone: "08054866046",
+    name: "Mrs Toyin Ilorin",
+    type: "Single",
+    table: "26",
+  },
+  {
+    phone: "07066161351",
+    name: "Mr&Mrs Esther O. Nwajiba",
+    type: "Plus One",
+    table: "44",
+  },
+  {
+    phone: "08032937058",
+    name: "Mr&Mrs V. Aigbotsua",
+    type: "Plus One",
+    table: "44",
+  },
+  {
+    phone: "08035322404",
+    name: "Lt. Uche Okaoma",
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08038686719",
+    name: "Lt. Tochiwu ILomionya",
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08052276066",
+    name: "Lt. Cy Ncheta",
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08035216312",
+    name: "Lt. Ugochukwu Donatus",
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08033371233",
+    name: "Lt. Uchenna O.",
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08060641691",
+    name: "Mrg Ebore Okafor",
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08035569503",
+    name: "Mrg Vich",
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08165327043",
+    name: "Mrs Proph Peace",
+    type: "Single",
+    table: "43",
+  },
+  {
+    phone: "07025606518",
+    name: "Mr Proph Aniekan",
+    type: "Single",
+    table: "43",
+  },
+  {
+    phone: "07052272239",
+    name: "Sam Mechanic",
+    type: "Single",
+    table: "44",
+  },
+  {
+    phone: "08082461257",
+    name: "Mrs Olabis Abioye",
+    type: "Single",
+    table: "43",
+  },
+  {
+    phone: "08061642452",
+    name: "Mama Rita",
+    type: "Single",
+    table: "43",
+  },
+  {
+    phone: "07036916350",
+    name: "Topese Mate",
+    type: "Single",
+    table: "43",
+  },
+  {
+    phone: "08167987331",
+    name: "Mr Chris Odigbo",
+    type: "Single",
+    table: "43",
+  },
+  {
+    phone: "08037185576",
+    name: "Shakiru Segun Olafitah",
+    type: "Single",
+    table: "43",
+  },
+  {
+    phone: "07039152075",
+    name: "Bro D Ani",
+    type: "Single",
+    table: "41",
+  },
+  {
+    phone: "07032343760",
+    name: "Mr Chukwu Nwafor",
+    type: "Single",
+    table: "41",
+  },
+  {
+    phone: "07056023934",
+    name: "Miss Deola",
+    type: "Single",
+    table: "41",
+  },
+  {
+    phone: "0810002719",
+    name: "Dechinonye Ogbonna",
+    type: "Single",
+    table: "",
+  },
+  {
+    phone: "08033285902",
+    name: "Ikechi Ezima",
+    type: "Single",
+    table: "43",
+  },
+  {
+    phone: "08033799960",
+    name: "Onyebuchi Emezie",
+    type: "Single",
+    table: "43",
+  },
+  {
+    phone: "08033125490",
+    name: "Mrs Aderongbe",
+    type: "Single",
+    table: "45",
+  },
+  {
+    phone: "08055409679",
+    name: "Junior Aderongbe",
+    type: "Single",
+    table: "45",
+  },
+  {
+    phone: "08033918596",
+    name: "M.T Adeboye",
+    type: "Single",
+    table: "26",
+  },
+  {
+    phone: "08032065021",
+    name: "Olanrewaju Ogunseye",
+    type: "Single",
+    table: "26",
+  },
+  {
+    phone: "08033066544",
+    name: "Rev&Rev Mrs",
+    type: "Plus One",
+    table: "26",
+  },
+  {
+    phone: "08052835123",
+    name: "Alhaji Chairman",
+    type: "Single",
+    table: "26",
+  },
+  {
+    phone: "08023411411",
+    name: "Alhaji Birilaye",
+    type: "Single",
+    table: "28",
+  },
+  {
+    phone: "08035416533",
+    name: "Mrs Precious Ejusi",
+    type: "Single",
+    table: "32",
+  },
+  {
+    phone: "08035469850",
+    name: "Mr&Mrs Oseni",
+    type: "Plus One",
+    table: "28",
+  },
+  {
+    phone: "080908781091",
+    name: "Baba Gani",
+    type: "Single",
+    table: "45",
+  },
+  {
+    phone: "08060978676",
+    name: "Mr&Mrs Ugochukwu Uruigwe",
+    type: "Plus One",
+    table: "45",
+  },
+  {
+    phone: "0807009878",
+    name: "Emmanuel Obochi",
+    type: "Single",
+    table: "45",
+  },
+  {
+    phone: "08030808800",
+    name: "Mrs Evelyn Enebeli",
+    type: "Single",
+    table: "45",
+  },
+  {
+    phone: "",
+    name: "Mr Tony",
+    type: "Single",
+    table: "45",
+  },
+  {
+    phone: "09097519994",
+    name: "Mr Sule Mopo",
+    type: "Single",
+    table: "45",
+  },
+  {
+    phone: "08034349193",
+    name: "Mr Adejuwon",
+    type: "Single",
+    table: "28",
+  },
+  {
+    phone: "09128498994",
+    name: "Chioma",
+    type: "Single",
+    table: "15",
+  },
+  {
+    phone: "08069126339",
+    name: "Mr Issa",
+    type: "Single",
+    table: "28",
+  },
+  {
+    phone: "08034948433",
+    name: "Mrs Awe",
+    type: "Single",
+    table: "28",
+  },
+  {
+    phone: "08033233168",
+    name: "Chibuzor Nkemakolem",
+    type: "Single",
+    table: "34",
+  },
+  {
+    phone: "07030332495",
+    name: "Rita Emem",
+    type: "Single",
+    table: "34",
+  },
+  {
+    phone: "08039410635",
+    name: "Arch Samuel Ibitora",
+    type: "Single",
+    table: "28",
+  },
+  {
+    phone: "09038202665",
+    name: "Blessing",
+    type: "Single",
+    table: "20",
+  },
+  {
+    phone: "08034846362",
+    name: "Mary Adedigba",
+    type: "Single",
+    table: "45",
+  },
+  {
+    phone: "08020394898",
+    name: "Iya Sharafat",
+    type: "Single",
+    table: "28",
+  },
+  {
+    phone: "07088049602",
+    name: "Mrs Nwaji",
+    type: "Single",
+    table: "15",
+  },
+  {
+    phone: "08037263792",
+    name: "Mr&Mrs Ezima",
+    type: "Plus One",
+    table: "15",
+  },
+  {
+    phone: "08149664020",
+    name: "Pat Ochemba",
+    type: "Single",
+    table: "",
+  },
+  {
+    phone: "08128566292",
+    name: "Rose",
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "",
+    name: "Chief Imohede",
+    type: "Single",
+    table: "15",
+  },
+  {
+    phone: "07026083701",
+    name: "Nonso",
+    type: "Plus One",
+    table: "22",
+  },
+  {
+    phone: "07011821467",
+    name: "Mr&Mrs Busari",
+    type: "Plus One",
+    table: "49",
+  },
+  {
+    phone: "07032020123",
+    name: "Mr John Sodeke",
+    type: "Single",
+    table: "47",
+  },
+  {
+    phone: "08065003526",
+    name: "Mrs Lucy Adepoju",
+    type: "Single",
+    table: "47",
+  },
+  {
+    phone: "07030328852",
+    name: "Mrs Ebunola Rufai",
+    type: "Single",
+    table: "47",
+  },
+  {
+    phone: "",
+    name: "Mr David",
+    type: "Single",
+    table: "47",
+  },
+  {
+    phone: "08036815897",
+    name: "Julius Nwaimo",
+    type: "Single",
+    table: "47",
+  },
+  {
+    phone: "09026645986",
+    name: "Racheal",
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "08120319908",
+    name: "Ijeoma",
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "09137300884",
+    name: "Oluchi",
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "09033834972",
+    name: "Kiki",
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "07042328033",
+    name: "Victory",
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "08036701976",
+    name: "Bro Jude",
+    type: "Single",
+    table: "10",
+  },
+  {
+    phone: "08037141170",
+    name: null,
+    type: "Plus One",
+    table: "46",
+  },
+  {
+    phone: "08024420038",
+    name: null,
+    type: "Single",
+    table: "46",
+  },
+  {
+    phone: "08035534171",
+    name: "Uncle IK",
+    type: "Plus One",
+    table: "4",
+  },
+  {
+    phone: "08028476915",
+    name: null,
+    type: "Plus One",
+    table: "46",
+  },
+  {
+    phone: "07013810964",
+    name: null,
+    type: "Single",
+    table: "48",
+  },
+  {
+    phone: "08033449716",
+    name: "Ezego & Family",
+    type: "Group 5",
+    table: "4",
+  },
+  {
+    phone: "08023875364",
+    name: null,
+    type: "Plus One",
+    table: "46",
+  },
+  {
+    phone: "08035928467",
+    name: null,
+    type: "Plus One",
+    table: "47",
+  },
+  {
+    phone: "08033073141",
+    name: null,
+    type: "Single",
+    table: "48",
+  },
+  {
+    phone: "08023467036",
+    name: null,
+    type: "Plus One",
+    table: "15",
+  },
+  {
+    phone: "07032303628",
+    name: null,
+    type: "Single",
+    table: "46",
+  },
+  {
+    phone: "08066941411",
+    name: null,
+    type: "Single",
+    table: "46",
+  },
+  {
+    phone: "08171112878",
+    name: null,
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "08036249707",
+    name: null,
+    type: "Plus One",
+    table: "11",
+  },
+  {
+    phone: "08100291393",
+    name: null,
+    type: "Single",
+    table: "11",
+  },
+  {
+    phone: "08182655608",
+    name: null,
+    type: "Plus One",
+    table: "11",
+  },
+  {
+    phone: "08061133840",
+    name: null,
+    type: "Plus One",
+    table: "47",
+  },
+  {
+    phone: "08057211121",
+    name: null,
+    type: "Single",
+    table: "46",
+  },
+  {
+    phone: "08033462183",
+    name: null,
+    type: "Plus One",
+    table: "48",
+  },
+  {
+    phone: "08053093450",
+    name: null,
+    type: "Single",
+    table: "47",
+  },
+  {
+    phone: "07036113783",
+    name: null,
+    type: "Plus One",
+    table: "48",
+  },
+  {
+    phone: "08033032526",
+    name: null,
+    type: "Plus One",
+    table: "48",
+  },
+  {
+    phone: "08076001079",
+    name: null,
+    type: "Single",
+    table: "11",
+  },
+  {
+    phone: "08082900508",
+    name: null,
+    type: "Single",
+    table: "8",
+  },
+  {
+    phone: "08023201933",
+    name: null,
+    type: "Single",
+    table: "11",
+  },
+  {
+    phone: "08037162713",
+    name: null,
+    type: "Plus One",
+    table: "11",
+  },
+  {
+    phone: "08128686767",
+    name: null,
+    type: "Single",
+    table: "11",
+  },
+  {
+    phone: "08023817469",
+    name: null,
+    type: "Plus One",
+    table: "8",
+  },
+  {
+    phone: "08038100979",
+    name: null,
+    type: "Plus One",
+    table: "6",
+  },
+  {
+    phone: "08033708389",
+    name: null,
+    type: "Plus One",
+    table: "6",
+  },
+  {
+    phone: "08126222127",
+    name: null,
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "08034801314",
+    name: null,
+    type: "Plus One",
+    table: "49",
+  },
+  {
+    phone: "08187790712",
+    name: null,
+    type: "Single",
+    table: "46",
+  },
+  {
+    phone: "07081605900",
+    name: null,
+    type: "Plus One",
+    table: "49",
+  },
+  {
+    phone: "0802819267",
+    name: null,
+    type: "Single",
+    table: "6",
+  },
+  {
+    phone: "08039597225",
+    name: null,
+    type: "Single",
+    table: "8",
+  },
+  {
+    phone: "07030052727",
+    name: null,
+    type: "Single",
+    table: "7",
+  },
+  {
+    phone: "08036252600",
+    name: null,
+    type: "Single",
+    table: "8",
+  },
+  {
+    phone: "08033245194",
+    name: "08028977086",
+    type: "Single",
+    table: "4",
+  },
+  {
+    phone: "08023159192",
+    name: null,
+    type: "Plus One",
+    table: "49",
+  },
+  {
+    phone: "08033792370",
+    name: "08125195581",
+    type: "Single",
+    table: "8",
+  },
+  {
+    phone: "08056174314",
+    name: null,
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "08033918596",
+    name: null,
+    type: "Single",
+    table: "8",
+  },
+  {
+    phone: "08026021709",
+    name: null,
+    type: "Single",
+    table: "8",
+  },
+  {
+    phone: "08023277420",
+    name: null,
+    type: "Single",
+    table: "8",
+  },
+  {
+    phone: "08033255080",
+    name: null,
+    type: "Single",
+    table: "13",
+  },
+  {
+    phone: "08060932176",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "08033234240",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "09029025808",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "08038184349",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "08164594636",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "08065591065",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "09031540270",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "09028870320",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "08028811444",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "08035210838",
+    name: null,
+    type: "Single",
+    table: "5",
+  },
+  {
+    phone: "08033487805",
+    name: null,
+    type: "Single",
+    table: "6",
+  },
+  {
+    phone: "08022074342",
+    name: null,
+    type: "Single",
+    table: "6",
+  },
+  {
+    phone: "08038335422",
+    name: null,
+    type: "Single",
+    table: "6",
+  },
+  {
+    phone: "08028318667",
+    name: null,
+    type: "Single",
+    table: "6",
+  },
+  {
+    phone: "08033191543",
+    name: null,
+    type: "Plus Two",
+    table: "49",
+  },
+  {
+    phone: "08062343266",
+    name: null,
+    type: "Single",
+    table: "49",
+  },
+  {
+    phone: "09163537331",
+    name: "08037113752",
+    type: "Single",
+    table: "50",
+  },
+  {
+    phone: "08038467948",
+    name: null,
+    type: "Single",
+    table: "50",
+  },
 ];
 
-// Function to add data to Firestore only if it does not already exist
+type Guest = {
+  phone: string;
+  name: string | null;
+  type: string;
+  table: string | null;
+};
+
+// Utility to chunk an array into smaller arrays of a given size
+const chunkArray = (arr: any, size: any) =>
+  arr.reduce((acc: any, _: any, i: any) => (i % size ? acc : [...acc, arr.slice(i, i + size)]), []);
+
+// Function to add guests to Firestore
 export const addGuestsToFirestore = async () => {
   try {
     const guestCollectionRef = collection(db, "guests");
-    const batch = writeBatch(db); // Initialize a batch write to improve efficiency
+    const batch = writeBatch(db); // Initialize batch
 
-    // Get all guests' phone numbers in a single query for efficiency
-    const q = query(guestCollectionRef, where("phone", "in", guests.map(g => g.phone)));
-    const querySnapshot = await getDocs(q);
+    // Break the guests into chunks of 30 to avoid 'in' query limit
+    const guestChunks = chunkArray(guests, 30);
 
-    // Collect existing phone numbers
-    const existingPhones = querySnapshot.docs.map(doc => doc.data().phone);
+    let existingPhones = new Set(); // Set to collect all existing phone numbers
 
-    // Iterate through the guest list and add guests that are not duplicates
+    // Iterate over each chunk and perform the query
+    for (const chunk of guestChunks) {
+      const q = query(guestCollectionRef, where("phone", "in", chunk.map((g: Guest) => g.phone)));
+      const querySnapshot = await getDocs(q);
+
+      // Collect existing phone numbers
+      querySnapshot.docs.forEach(doc => {
+        existingPhones.add(doc.data().phone);
+      });
+    }
+
+    // Add guests that don't already exist
     guests.forEach((guest) => {
-      if (!existingPhones.includes(guest.phone)) {
-        const docRef = doc(guestCollectionRef); // Generate a new document reference
-        batch.set(docRef, guest); // Add the guest to the batch
+      if (!existingPhones.has(guest.phone)) {
+        const docRef = doc(guestCollectionRef); // Generate new document reference
+        batch.set(docRef, guest); // Add guest to the batch
       }
     });
 
@@ -55,3 +1832,6 @@ export const addGuestsToFirestore = async () => {
     console.error("Error adding guests: ", error);
   }
 };
+
+
+
